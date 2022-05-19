@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head.ejs') %>
+    <title>Pokemon Show</title>
+</head>
+<body>
+    <div class="container">
+        <h1><%= pokemon.name%></h1>
+        <a href="/pokemon"><button>Back to Pokedex</button></a>
+        <br />
+        <img src='<%= pokemon.img %>' alt='<%= pokemon.name%>' height="250px"/>
+    </div>
+</body>
+</html>

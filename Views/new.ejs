@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head.ejs') %>
+    <title>Pokemon New</title>
+</head>
+<body>
+    <div class="container">
+        <h1>New Pokemon</h1>
+        <form action='/pokemon' method='POST'>
+            <!-- name="" tells it which key value to send it back to in model -->
+            <a href="/pokemon"><button>Back to Pokedex</button></a>
+            <br />
+            Name: <input type="text" name="name" placeholder="input pokemon name"/><br />
+            Type: <input type="text" name="type" placeholder="i.e. Grass, Poison"/><br />
+            Image: <input type="text" name="img" placeholder="url http://....jpg"/><br />
+            <input type="submit" value="Add New Pokemon" />
+            <br />
+        </form>
+    </div>
+</body>
+</html>
