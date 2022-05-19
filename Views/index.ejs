@@ -15,7 +15,7 @@
                 <th>Type</th>
                 <th>User Tools</th>
             </tr>
-        <% for(let i=0; i<5; i++) { %>
+        <% for(let i=0; i<pokemon.length; i++) { %>
             <tr>
                     <td><img src='<%= pokemon[i].img %>' alt='<%= pokemon[i].name%>' height="60px"/> <br /> <a href="/pokemon/<%=i; %>/edit">Edit</a></td>
                     <td><a href="/pokemon/<%= i %>"><%= pokemon[i].name %></a></td>
@@ -27,6 +27,7 @@
                 </tr>
                 <% } %>
             </table>
+            <a href="/pokemon/new"><button>Add New Item</button></a>
     </div>
 </body>
 </html>
