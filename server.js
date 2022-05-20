@@ -27,8 +27,11 @@ app.get('/pokemon/new', (req, res) => {
 
 // D
 app.delete("/pokemon/:id", (req, res) => {
-    // remove the item from the array. number tells how many to remove.
-    pokemon.splice(req.params.id, 1);
+    // ZACH magic
+    const index = pokemon.findIndex( (p) => {
+        return p.id === req.params.id
+    })
+    pokemon.splice(index, 1);
     res.redirect('/pokemon')
   });
 
@@ -37,20 +40,59 @@ app.get("/pokemon/:id/edit", (req, res) => {
     res.render(
       "edit.ejs", 
       {
-        pokemon: pokemon[req.params.id],
+        pokemon: pokemon.find( (p) => {
+            return p.id === req.params.id
+        }),
         index: req.params.id, 
       }
     )
   });
-  
   app.put("/pokemon/:id", (req, res) => {
-    pokemon[req.params.id] = req.body 
+      //   ZACH this function used .findindex to make sure that the pokemon I 
+        const index = pokemon.findIndex( (p) => {
+        return p.id === req.params.id
+    })
+    const existingPokemon = pokemon[index]; 
+    const updatedPokemon = {
+        // ... ZACH spread operator: in array makes new array and copies them over, similarly it copies properties in an object.
+        ... existingPokemon,
+        img: req.body.img,
+        name: req.body.name,
+        type: req.body.type,
+        misc: {
+            classification: req.body.classification,
+        },
+        stats: {
+            hp: req.body.hp,
+            attack: req.body.attack,
+            defense: req.body.defense,
+            speed: req.body.speed,
+        }
+    }
+    console.log(updatedPokemon)
+    pokemon[index] = updatedPokemon 
     res.redirect("/pokemon") //redirect to the index page
   })
 // C
 app.post('/pokemon', (req, res) => {
-    pokemon.push(req.body)
-    console.log(pokemon)
+    //ZACH mainually handle nested data from edit and put
+    const newPokemon = {
+        id: pokemon.length + 1,
+        img: req.body.img,
+        name: req.body.name,
+        type: req.body.type,
+        misc: {
+            classification: req.body.classification,
+        },
+        stats: {
+            hp: req.body.hp,
+            attack: req.body.attack,
+            defense: req.body.defense,
+            speed: req.body.speed,
+        }
+    }
+    // console.log(newPokemon)
+    pokemon.unshift(newPokemon)
     res.redirect('/pokemon')
 });
 
@@ -58,7 +100,10 @@ app.post('/pokemon', (req, res) => {
 // S
 app.get('/pokemon/:id', (req, res) => {
     res.render('show.ejs', {
-        'pokemon' :pokemon[req.params.id]
+        // find the pokemon based on ID
+        'pokemon' : pokemon.find( (p) => {
+            return p.id === req.params.id
+        })
     });
 });
 

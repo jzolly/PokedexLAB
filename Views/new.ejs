@@ -8,12 +8,18 @@
     <div class="container">
         <h1>New Pokemon</h1>
         <form action='/pokemon' method='POST'>
-            <!-- name="" tells it which key value to send it back to in model -->
             <a href="/pokemon"><button>Back to Pokedex</button></a>
+            <!-- name="" tells it which key value to send it back to in model -->
             <br />
+            Image: <input type="url" name="img" placeholder="url http://....jpg"/><br />
             Name: <input type="text" name="name" placeholder="input pokemon name"/><br />
             Type: <input type="text" name="type" placeholder="i.e. Grass, Poison"/><br />
-            Image: <input type="text" name="img" placeholder="url http://....jpg"/><br />
+            Classification: <input type="text" name="classification" placeholder="input pokemon classification"/><br />
+            Statistics: </br> 
+            Hit Points<input type="number" name="hp" placeholder="hit points"/></br>
+             Attack<input type="number" name="attack" placeholder="attack points"/></br>
+             Defense<input type="number" name="defense" placeholder="defense points"/></br>
+             Speed<input type="number" name="speed" placeholder="speed points"/></br>
             <input type="submit" value="Add New Pokemon" />
             <br />
         </form>

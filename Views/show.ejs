@@ -10,6 +10,17 @@
         <a href="/pokemon"><button>Back to Pokedex</button></a>
         <br />
         <img src='<%= pokemon.img %>' alt='<%= pokemon.name%>' height="250px"/>
+        <h5>Type</h5>
+        <p><%= pokemon.type %></p>
+        <h5>Classification</h5>
+        <p><%= pokemon.misc.classification %></p>
+        <h5>Statistics</h5>
+        <ul>
+            <li>Hit Points<%= pokemon.stats.hp %></li>
+            <li>Attack<%= pokemon.stats.attack %></li>
+            <li>Defense<%= pokemon.stats.defense %></li>
+            <li>Speed<%= pokemon.stats.speed %></li>
+        </ul>
     </div>
 </body>
 </html>

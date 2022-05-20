@@ -7,11 +7,19 @@
 <body>
     <div class="container">
         <h1>Edit Pokemon</h1>
-        <form action="/pokemon/<%=index%>?_method=PUT" method="POST">
+        <a href="/pokemon"><button>Back to Pokedex</button></a>
+        <!-- ZACH removed index from action, pokemon.id, because that is how we setup the route. Also Zach, remove dot notations -->
+        <form action="/pokemon/<%=pokemon.id%>?_method=PUT" method="POST">
+            Image: <input type="url" name="img" value="<%=pokemon.img%>" />
+            <br />
             Name: <input type="text" name="name" value="<%=pokemon.name%>" /><br />
             Type: <input type="text" name="type" value="<%=pokemon.type%>" /><br />
-            Image: <input type="text" value="<%=pokemon.img%>" />
-            <br />
+            Classification: <input type="text" name="classification" value="<%= pokemon.misc.classification %>" placeholder="input pokemon classification"/><br />
+            Statistics: </br> 
+             Hit Points<input type="number" name="hp" value="<%=pokemon.stats.hp%>" placeholder="hit points"/></br>
+             Attack<input type="number" name="attack" value="<%=pokemon.stats.attack%>" placeholder="attack points"/></br>
+             Defense<input type="number" name="defense" value="<%=pokemon.stats.defense%>" placeholder="defense points"/></br>
+             Speed<input type="number" name="speed" value="<%=pokemon.stats.speed%>" placeholder="speed points"/></br>
             <input type="submit" name="" value="Submit Changes" />
           </form>
     </div>

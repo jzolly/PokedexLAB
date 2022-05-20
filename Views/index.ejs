@@ -7,7 +7,7 @@
 <body>
     <div class="container">
         <h1>Pokemon Index</h1>
-        <a href="/pokemon/new"><button>Add New Item</button></a>
+        <a href="/pokemon/new"><button>Add New Pokemon</button></a>
         <table>
             <tr>
                 <th>Image</th>
@@ -15,19 +15,19 @@
                 <th>Type</th>
                 <th>User Tools</th>
             </tr>
-        <% for(let i=0; i<pokemon.length; i++) { %>
+        <% for(let i=0; i<10; i++) { %>
             <tr>
-                    <td><img src='<%= pokemon[i].img %>' alt='<%= pokemon[i].name%>' height="60px"/> <br /> <a href="/pokemon/<%=i; %>/edit">Edit</a></td>
-                    <td><a href="/pokemon/<%= i %>"><%= pokemon[i].name %></a></td>
+                    <td><img src='<%= pokemon[i].img %>' alt='<%= pokemon[i].name%>' height="60px"/> <br /> <a href="/pokemon/<%=pokemon[i].id; %>/edit">Edit</a></td>
+                    <td><a href="/pokemon/<%= pokemon[i].id %>"><%= pokemon[i].name %></a></td>
                     <td><%= pokemon[i].type %></td>
-                    <td> <form action="/pokemon/<%=i; %>?_method=DELETE" method="POST">
+                    <td> <form action="/pokemon/<%=pokemon[i].id; %>?_method=DELETE" method="POST">
                         <input type="submit" value="DELETE" />
                       </form>
                        </td>
                 </tr>
                 <% } %>
             </table>
-            <a href="/pokemon/new"><button>Add New Item</button></a>
+            <a href="/pokemon/new"><button>Add New Pokemon</button></a>
     </div>
 </body>
 </html>
