@@ -27,7 +27,7 @@ app.get('/pokemon/new', (req, res) => {
 
 // D
 app.delete("/pokemon/:id", (req, res) => {
-    // ZACH magic
+    // Z This function allows me to delete a pokemon but only if the one I grabbed matches the id of the one clicked.
     const index = pokemon.findIndex( (p) => {
         return p.id === req.params.id
     })
@@ -39,6 +39,7 @@ app.delete("/pokemon/:id", (req, res) => {
 app.get("/pokemon/:id/edit", (req, res) => {
     res.render(
       "edit.ejs", 
+    //   this function allows me to grab a pokemon my its id not its index
       {
         pokemon: pokemon.find( (p) => {
             return p.id === req.params.id
@@ -48,13 +49,13 @@ app.get("/pokemon/:id/edit", (req, res) => {
     )
   });
   app.put("/pokemon/:id", (req, res) => {
-      //   ZACH this function used .findindex to make sure that the pokemon I 
+      //   Z. this function used .findindex to make sure that the pokemon I grabbed on my page matches, by id, the one in my data, that way I am sure I'm editing the correct data.
         const index = pokemon.findIndex( (p) => {
         return p.id === req.params.id
     })
     const existingPokemon = pokemon[index]; 
     const updatedPokemon = {
-        // ... ZACH spread operator: in array makes new array and copies them over, similarly it copies properties in an object.
+        // ... Z spread operator: in array makes new array and copies them over, similarly it copies properties in an object.  This is the solution for getting in to the nested data in misc and stats.
         ... existingPokemon,
         img: req.body.img,
         name: req.body.name,
@@ -75,7 +76,7 @@ app.get("/pokemon/:id/edit", (req, res) => {
   })
 // C
 app.post('/pokemon', (req, res) => {
-    //ZACH mainually handle nested data from edit and put
+    //Z mainually handle nested data from edit.
     const newPokemon = {
         id: pokemon.length + 1,
         img: req.body.img,
